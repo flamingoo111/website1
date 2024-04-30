@@ -55,7 +55,10 @@ def reqister():
             return render_template('registration.html', title='Регистрация', form=form,
                                    message="Пароли не совпадают")
         db_sess = db_session.create_session()
-        if db_sess.query(User).filter(User.email == form.email.data or User.name == form.name.data).first():
+        if db_sess.query(User).filter(User.name == form.name.data).first():
+            return render_template('registration.html', title='Регистрация', form=form,
+                                   message="Такой пользователь уже есть")
+        if db_sess.query(User).filter(User.email == form.email.data).first():
             return render_template('registration.html', title='Регистрация', form=form,
                                    message="Такой пользователь уже есть")
         user = User(

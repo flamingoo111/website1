@@ -22,7 +22,6 @@ charset-normalizer
 click
 clr-loader
 colorama
-cryptography
 cssselect2
 curl-cffi
 defusedxml
@@ -65,8 +64,6 @@ proxy-tools
 pycparser
 pycryptodome
 pycryptodomex
-pydantic
-pydantic-core
 PyExecJS
 pyinstaller
 pyinstaller-hooks-contrib

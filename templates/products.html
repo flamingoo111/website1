@@ -1,0 +1,138 @@
+    {% extends "index.html" %}
+
+    {% block content %}
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <meta name="description" content="Your description">
+		<meta name="keywords" content="Your,Keywords">
+		<meta name="author" content="ResponsiveWebInc">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<!-- Styles -->
+		<!-- Bootstrap CSS -->
+		<link href="static/products/bootstrap.min.css" rel="stylesheet">
+		<!-- Font awesome CSS -->
+		<link href="static/products/font-awesome.min.css" rel="stylesheet">
+
+
+		<!-- Main CSS -->
+		<link href="static/products/style-147.css" rel="stylesheet">
+
+		<!-- Favicon -->
+		<link rel="shortcut icon" href="ui-147.html#">
+
+
+	<link rel="stylesheet" href="static/styles.css" />
+	<link rel="stylesheet" href="static/style2.css" />
+		<div class="ui-147">
+			<form action="/loading" method="get" id="myForm">
+    		{{ form.hidden_tag()}}
+			<div class="container">
+				{% for product in list %}
+				{% if list.index(product) % 4 == 0 %}
+        			<div class="row">
+    			{% endif %}
+						<div class="col-md-3 col-sm-6">
+							<label for="{{product}}" style="height:auto">
+								<div class="ui-item" style="background-color: #FFDAB9; cursor: pointer;">
+									<a><img src="static/img/{{list.index(product) + 1}}.png" alt="" class="img-responsive"></a>
+									<!--h2><a><button onclick="products()" style="background: transparent; border: none;">{{product}}</button></a-->
+									<h2>{{product}}</h2>
+									<input class="products" type="checkbox" value="{{product}}" name="{{product}}" id="{{product}}" style="display:none;">
+								</div>
+							</label>
+						</div>
+				{% if (list.index(product) + 1) % 4 == 0 %}
+        			</div>
+    			{% endif %}
+				{% endfor %}
+
+				{% for product2 in class_products %}
+				{% if custom_prosucts.index(product2.product) % 4 == 0 %}
+        			<div class="row">
+    			{% endif %}
+						<div class="col-md-3 col-sm-6">
+							<label for="{{ product2.product }}" style="height:auto">
+								<div class="ui-item" style="background-color: #FFDAB9; cursor: pointer;">
+									{% if product2.image %}
+									<a><img src="{{product2.image}}" alt="" class="img-responsive"></a>
+									{% else %}
+									<a><img src="static/img/quations.png" alt="" class="img-responsive"></a>
+									{% endif %}
+									<div>
+                    					<a href="/products_delete/{{product2.id }}" class="btn btn-danger" style="border-radius: 20px; position: absolute; top: 9px; right: 9px;">X</a>
+									</div>
+									<!--h2><a><button onclick="products()" style="background: transparent; border: none;">{{product}}</button></a-->
+									<h2>{{product2.product}}</h2>
+									<input class="products" type="checkbox" value="{{product2.product}}" name="{{product2.product}}" id="{{product2.product}}" style="display:none;">
+								</div>
+							</label>
+						</div>
+				{% if (custom_prosucts.index(product2.product) + 1) % 4 == 0 %}
+        			</div>
+    			{% endif %}
+				{% endfor %}
+			</div>
+			<div class="container">
+				<div class="col-md-2 col-sm-6" style="margin-left: 290px">
+			<div class="ui-item" style="background-color: #FFDAB9; text-align: center;">
+				<a href="/upload_product"><img src="static/img/new.png" alt="" class="img-responsive"></a>
+				<a href="/upload_product"><h2>Добавить продукт</h2></a>
+			</div>
+				</div>
+				<div class="col-md-5 col-sm-5" style="width=500px">
+			<div class="ui-item" style="background-color: lightgreen">
+				<h2><button type="submit" style=" border: none; width: 100%; display: block; height: 100%; position: absolute; top: 0; background: none; font-size: 28px"> Создать рецепт</button></h2>
+			</div>
+				</div>
+			</div>
+			</form>
+			</div>
+		<!-- Javascript files -->
+		<!-- jQuery -->
+		<script src="js/jquery.js"></script>
+		<!-- Bootstrap JS -->
+		<script src="js/bootstrap.min.js"></script>
+		<!-- Placeholder JS -->
+		<script src="js/placeholder.js"></script>
+		<!-- Respond JS for IE8 -->
+		<script src="js/respond.min.js"></script>
+		<!-- HTML5 Support for IE -->
+		<script src="js/html5shiv.js"></script>
+	<script>
+	$(document).ready(function(){
+		$("input.products").click(function(){
+			console.log(111);
+			if($(this).is(':checked')){
+				$(this).parent().css("background-color", "#FFCAA9");
+				console.log(222);
+			} else {
+				$(this).parent().css("background-color", "#FFDAB9");
+				console.log(333);
+			}
+		})
+	});
+	</script>
+
+<div id="openModal" class="modal1">
+  <div class="modal1-dialog">
+	<div class="modal1-content">
+	  <div class="modal1-header">
+		<h3 class="modal1-title">Информация</h3>
+		<a href="#close" title="Close" class="close1">×</a>
+	  </div>
+	  <div class="modal1-body">
+Самое время влиться в искуственный интелект! Воспользуйтесь бесплатным сервисом рецептов искусственного интеллекта<br />
+                            Просто выберите продукты, которые у вас есть или введите их с клавиатуры, а после получите пошаговый рецепт!
+	  </div>
+	</div>
+  </div>
+</div>
+
+{% endblock %}

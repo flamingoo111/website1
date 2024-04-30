@@ -1,0 +1,14 @@
+    {% extends "index.html" %}
+
+    {% block content %}
+    <div class="block" style="margin-top: 88px;">
+    <img src="static/img/loading.gif">
+    <p class="privetstvie" style="margin-top: 100px; color: #E09F8A; text-align: center; background: #f4e4e3; font-size: 60px; font-family: Geneva, Arial, Helvetica, sans-serif; ">
+        {{message}}</p>
+        {% if message == "Что-то пошло не так, похоже вы не выбрали продукт..." %}
+        <a href="/"><h2>Вернуться назад</h2></a>
+        {% else %}
+        <meta http-equiv="refresh" content="0;URL=/result" />
+    	{% endif %}
+     </div>
+    {% endblock %}
